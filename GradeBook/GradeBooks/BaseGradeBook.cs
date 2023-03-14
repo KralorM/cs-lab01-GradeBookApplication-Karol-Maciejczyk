@@ -9,15 +9,30 @@ using Newtonsoft.Json.Linq;
 
 namespace GradeBook.GradeBooks
 {
-    public class BaseGradeBook
+    public abstract class BaseGradeBook
     {
+        public GradeBookType Type { get; set; }
+
+        
+
+        public bool IsWeighted { get; set; }
+
         public string Name { get; set; }
         public List<Student> Students { get; set; }
 
-        public BaseGradeBook(string name)
+
+        public BaseGradeBook(string name,bool BaseGradebook)
         {
             Name = name;
             Students = new List<Student>();
+            if (BaseGradebook)
+            {
+                IsWeighted = true;
+            }
+            else
+            {
+                IsWeighted = false;
+            }
         }
 
         public void AddStudent(Student student)
@@ -106,20 +121,96 @@ namespace GradeBook.GradeBooks
 
         public virtual double GetGPA(char letterGrade, StudentType studentType)
         {
-            switch (letterGrade)
+            if (IsWeighted == true)
             {
-                case 'A':
-                    return 4;
-                case 'B':
-                    return 3;
-                case 'C':
-                    return 2;
-                case 'D':
-                    return 1;
-                case 'F':
-                    return 0;
+                if (studentType == StudentType.Standard)
+                {
+
+                    switch (letterGrade)
+                    {
+                        case 'A':
+                            return 4;
+                        case 'B':
+                            return 3;
+                        case 'C':
+                            return 2;
+                        case 'D':
+                            return 1;
+                        case 'F':
+                            return 0;
+
+                    }
+
+
+                }
+                else if (studentType == StudentType.Honors || studentType == StudentType.DualEnrolled)
+                {
+
+                    switch (letterGrade)
+                    {
+                        case 'A':
+                            return 5;
+                        case 'B':
+                            return 4;
+                        case 'C':
+                            return 3;
+                        case 'D':
+                            return 2;
+                        case 'F':
+                            return 0;
+
+                    }
+
+                }
+
             }
+            else if (IsWeighted == false)
+            {
+                if (studentType == StudentType.Standard)
+                {
+                    switch (letterGrade)
+                    {
+                        case 'A':
+                            return 4;
+                        case 'B':
+                            return 4;
+                        case 'C':
+                            return 4;
+                        case 'D':
+                            return 4;
+                        case 'F':
+                            return 4;
+
+                    }
+                }
+                else if (studentType == StudentType.Honors||studentType == StudentType.DualEnrolled)
+                {
+                    switch (letterGrade)
+                    {
+                        case 'A':
+                            return 4;
+                        case 'B':
+                            return 4;
+                        case 'C':
+                            return 4;
+                        case 'D':
+                            return 4;
+                        case 'F':
+                            return 4;
+
+                    }
+                }
+            }
+            
+
             return 0;
+
+               
+                
+            
+
+                       
+
         }
 
         public virtual void CalculateStatistics()
@@ -203,6 +294,8 @@ namespace GradeBook.GradeBooks
                 Console.WriteLine(grade);
             }
         }
+        
+       
 
         public virtual char GetLetterGrade(double averageGrade)
         {
@@ -217,6 +310,8 @@ namespace GradeBook.GradeBooks
             else
                 return 'F';
         }
+
+
 
         /// <summary>
         ///     Converts json to the appropriate gradebook type.

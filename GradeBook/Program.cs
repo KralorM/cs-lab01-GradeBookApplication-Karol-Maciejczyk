@@ -7,6 +7,8 @@ namespace GradeBook
     {
         static void Main(string[] args)
         {
+            
+
             Console.WriteLine("#=======================#");
             Console.WriteLine("# Welcome to GradeBook! #");
             Console.WriteLine("#=======================#");
