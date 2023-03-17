@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+
 
 namespace GradeBook.GradeBooks
 {
@@ -8,6 +10,9 @@ namespace GradeBook.GradeBooks
     {
         public static Student student;
 
+        
+
+        
 
         public RankedGradeBook(String name,bool RankedGradebook):base(name,RankedGradebook)
         {
@@ -17,67 +22,50 @@ namespace GradeBook.GradeBooks
 
         public override char GetLetterGrade(double averageGrade)
         {
-            int allstudentpoints1 = 0;
+            var liczbastudentow = Students.Count;
+            var procentowyprog = Convert.ToInt32(liczbastudentow * 0.2);
+            Students.OrderByDescending(e => e.AverageGrade);
+            var ocena = Students.Select(b => b.AverageGrade).ToList();
 
-            foreach (var student in Students)
+            if (liczbastudentow < 5)
             {
-                allstudentpoints1 = (int)+ student.AverageGrade;
+                throw new InvalidOperationException();
+
+
             }
 
-            int averageofallstudents = allstudentpoints1 / Students.Count;
-
-
-            if (averageGrade >= averageofallstudents + 10)
-                return 'A';   
-
-
-
-
-            else if (averageGrade >= averageofallstudents)
+            if (ocena[procentowyprog - 1] <= averageGrade)
+            {
+                return 'A';
+            }
+            else if (ocena[(procentowyprog * 2) - 1] <= averageGrade)
+            {
                 return 'B';
-            else if (averageGrade >= averageofallstudents - 10)
+            }
+
+            else if (ocena[(procentowyprog * 3) - 1] <= averageGrade)
+            {
                 return 'C';
-            else if (averageGrade >= averageofallstudents - 20)
+            }
+
+            else if (ocena[(procentowyprog * 4) - 1] <= averageGrade)
+            {
                 return 'D';
+            }
             else
+            {
                 return 'F';
+            }
 
-            //else
-            //{
-            //    if (averageGrade >= 90)
-            //        return 'A';
-            //    else if (averageGrade >= 80)
-            //        return 'B';
-            //    else if (averageGrade >= 70)
-            //        return 'C';
-            //    else if (averageGrade >= 60)
-            //        return 'D';
-            //    else
-            //        return 'F';
-            //}
+           
 
-            //List<double> AverageGrades = new List<double>();
-
-            //// ile jest wszystkich studentow 
-            //int x = Students.Count;
-
-            ////lista srednich wszystkich studentow posortawana
-            //if (x < 5)
-            //{
-            //    throw new InvalidOperationException();
-            //}
-            //else
-            //{
-            //    foreach (Student item in Students)
-            //    {
-            //        AverageGrades.Add(item.AverageGrade);
-
-            //    }
-            //}
 
 
 
            
+
+
+
         }
 
         public override void CalculateStatistics()

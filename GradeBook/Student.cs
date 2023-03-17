@@ -9,6 +9,9 @@ namespace GradeBook
 {
     public class Student
     {
+        
+
+
         public string Name { get; set; }
         public StudentType Type { get; set; }
         public EnrollmentType Enrollment { get; set; }
@@ -33,6 +36,8 @@ namespace GradeBook
             Enrollment = enrollment;
             Grades = new List<double>();
         }
+
+       
 
         public void AddGrade(double grade)
         {
