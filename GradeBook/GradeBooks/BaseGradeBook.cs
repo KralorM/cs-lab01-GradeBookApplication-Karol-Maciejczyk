@@ -22,10 +22,11 @@ namespace GradeBook.GradeBooks
         public List<Student> Students { get; set; }
 
 
-        public BaseGradeBook(string name,bool BaseGradebook)
+        public BaseGradeBook(string name,bool BaseGradebook) //Added Bool to BaseGradebook Constructor
         {
             Name = name;
             Students = new List<Student>();
+            //Setting IsWeighted Propertie using bool parameter
             if (BaseGradebook)
             {
                 IsWeighted = true;

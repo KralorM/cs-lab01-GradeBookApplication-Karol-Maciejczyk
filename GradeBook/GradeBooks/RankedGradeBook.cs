@@ -14,7 +14,7 @@ namespace GradeBook.GradeBooks
 
         //Creating RankedGradebook class
 
-        public RankedGradeBook(String name,bool RankedGradebook):base(name,RankedGradebook)
+        public RankedGradeBook(String name,bool RankedGradebook):base(name,RankedGradebook) //Adding bool to the RankedGradeBook Constructor
         {
             this.Name = name;
             Type = Enums.GradeBookType.Ranked;

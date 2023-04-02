@@ -45,6 +45,8 @@ namespace GradeBook.UserInterfaces
             //Update CreateCommand's Conditions
             //return a new GradeBook based on the provided type
             // Update StartingUserInterfaces's HelpCommand method
+            //Updated StartingUserInterface.CreateCommand condition
+            //Update StartingUserInterface.CreateCommand to accept IsWeighted
 
 
             var parts = command.Split(' ');

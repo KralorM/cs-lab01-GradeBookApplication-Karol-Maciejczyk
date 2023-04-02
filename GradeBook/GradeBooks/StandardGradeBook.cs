@@ -6,7 +6,7 @@ namespace GradeBook.GradeBooks
 {
      public class StandardGradeBook : BaseGradeBook
     {
-        public StandardGradeBook(String name,bool StandardGradebook):base(name,StandardGradebook)
+        public StandardGradeBook(String name,bool StandardGradebook):base(name,StandardGradebook) //Adding bool to the StandardGradebook Constructor
         {
             this.Name = name;
             Type = Enums.GradeBookType.Standard;
