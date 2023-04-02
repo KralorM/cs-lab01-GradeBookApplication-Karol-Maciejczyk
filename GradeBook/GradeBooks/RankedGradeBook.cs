@@ -20,6 +20,8 @@ namespace GradeBook.GradeBooks
             Type = Enums.GradeBookType.Ranked;
         }
 
+
+        //Overiding GetLetterGrade Method
         public override char GetLetterGrade(double averageGrade)
         {
             var liczbastudentow = Students.Count;
@@ -68,6 +70,8 @@ namespace GradeBook.GradeBooks
 
         }
 
+
+        //Overriding CalculateStatistics Method
         public override void CalculateStatistics()
         {
             int y = Students.Count;
@@ -82,6 +86,8 @@ namespace GradeBook.GradeBooks
            
         }
 
+
+        //Overriding CalculateStudentStatistics Method
         public override void CalculateStudentStatistics(string name)
         {
             int b = Students.Count;
