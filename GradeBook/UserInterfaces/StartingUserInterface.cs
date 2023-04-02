@@ -39,8 +39,14 @@ namespace GradeBook.UserInterfaces
         }
 
         public static void CreateCommand(string command)
-        {   
-            
+        {
+
+            //Update StartingUserInterface's CreateCommand method
+            //Update CreateCommand's Conditions
+            //return a new GradeBook based on the provided type
+            // Update StartingUserInterfaces's HelpCommand method
+
+
             var parts = command.Split(' ');
             
             if (parts.Length != 4)
