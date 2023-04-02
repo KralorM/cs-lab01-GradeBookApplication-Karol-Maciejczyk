@@ -12,7 +12,7 @@ namespace GradeBook.GradeBooks
 
         
 
-        
+        //Creating RankedGradebook class
 
         public RankedGradeBook(String name,bool RankedGradebook):base(name,RankedGradebook)
         {
